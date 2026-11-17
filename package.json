@@ -1,0 +1,35 @@
+{
+  "name": "pi-relay-server",
+  "version": "0.1.0",
+  "description": "pi 远程控制公网中继服务端：TLS 字节透明反向代理 + 多 agent 设备批准制（独立部署于自有 ECS）",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "exports": {
+    "./protocol": {
+      "types": "./dist/protocol.d.ts",
+      "default": "./dist/protocol.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "scripts",
+    "README.md"
+  ],
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "start": "node scripts/pi-relay-server.ts start"
+  },
+  "dependencies": {
+    "ws": "^8.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/ws": "^8.18.2",
+    "typescript": "5.9.3"
+  }
+}
